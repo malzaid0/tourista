@@ -3,14 +3,56 @@
 {% block title %}List{% endblock title %}
 
 {% block content %}
-<br>
-<div class="row">
-  {% for destination in destinations %}
-  <a href="{% url 'destination-detail' destination.id %}">
-    <img src="{{destination.pretty_picture.url}}" />
-    <p>{{destination.name}}</p>
-    <p>{{destination.activities}}</p>
-  </a>
-  {% endfor %}
-</div>
+    <div class="container-fluid mt-3">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container-fluid">
+                    <img src="/media/travel-the-world.png" class="d-block w-100">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container-fluid">
+                    <img src="/media/Travel.png" class="d-block w-100">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container-fluid">
+                    <img src="/media/ISIC-BLOG-POST-1-HERO@2x.png" class="d-block w-100">
+                </div>
+
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+    </div>
+
+    <div class="col-12 text-center mt-5">
+        <h1 class="text-dark pt-4">Tourista</h1>
+        <div class="border-top border-primary w-25 mx-auto my-3"></div>
+        <p class="lead">Travel The World</p>
+    </div>
+
+    <div class="container">
+        <div class="row my-5">
+            {% for destination in destinations %}
+            <div class="col-md-4 my-4">
+                <div class="innerimg">
+                    <img src="{{destination.pretty_picture.url}}" class="card-img-top">
+                </div>
+                <h4 class="my-4">{{destination.name}}</h4>
+                <p>{{destination.activities}}</p>
+                <a href="{% url 'destination-detail' destination.id %}" class="btn btn-outline-dark btn-md">Learn More..</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock content %}

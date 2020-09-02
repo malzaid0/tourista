@@ -3,15 +3,33 @@
 {% block title %}Detail{% endblock title %} 
 
 {% block content %}
-    <p>{{destination.name}}</p>
-    <p>{{destination.description}}</p>
-    <p>{{destination.activities}}</p>
-    <p><img src="{{destination.pretty_picture.url}}"></p>
-    <p>{{destination.optimal_visiting_season}}</p>
-    <a href="{% url 'destination-update' destination.id %}">
-        <button>Update</button>
-    </a>
-    <a href="{% url 'destination-delete' destination.id %}">
-        <button>Delete</button>
-    </a>
+    <div class="col-12 text-center mt-5">
+        <h1 class="text-dark pt-4">{{destination.name}}</h1>
+        <div class="border-top border-primary w-25 mx-auto my-3"></div>
+        <p class="lead">{{destination.activities}}</p>
+    </div>
+
+    <div class="container my-5">
+        <div class="row py-4">
+            <div class="col-lg-4 mb-4 my-lg-auto">
+                <h3 class="text-dark mb-3">{{destination.optimal_visiting_season}}</h3>
+                <p class="lead mb-5">{{destination.description}}</p>
+                <div class="panel-body">
+                    <a href="{% url 'destination-update' destination.id %}">
+                    <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-edit"></i></button>
+                    </a>
+
+                    <a href="{% url 'destination-delete' destination.id %}">
+                    <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-trash"></i></button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <img src="{{destination.pretty_picture.url}}" class="w-100">
+            </div>
+
+        </div>
+    </div>
+
 {% endblock content %}
